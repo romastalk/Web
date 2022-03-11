@@ -1,0 +1,60 @@
+﻿{% extends "app/layout.html" %}
+
+{% block content %}
+{% load staticfiles %}
+
+<div class="jumbotron">
+    <h1>ГеоТрейд</h1>
+    <p class="lead">Компания осуществляет выпуск и сбыт георешеток.</p>
+    <p><a href="https://geotrade.su/" class="btn btn-primary btn-large">Узнать больше &raquo;</a></p>
+</div>
+
+<div class="slideshow-container">
+    <div class="mySlides fade"><img class="photo-cell" src="{% static 'app/content/f1.jpg' %}" /></div>
+    <div class="mySlides fade"><img class="photo-cell" src="{% static 'app/content/f2.jpeg' %}" /></div>
+    <div class="mySlides fade"><img class="photo-cell" src="{% static 'app/content/f3.jpg' %}" /></div>
+
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+</div>
+
+<script>
+    var slideIndex = 1;
+    showSlides(slideIndex);
+
+    // Next/previous controls
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+
+    function showSlides(n) {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        if (n > slides.length) { slideIndex = 1 }
+        if (n < 1) { slideIndex = slides.length }
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        slides[slideIndex - 1].style.display = "block";
+    }
+</script>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Информация</h2>
+        <p>
+            Компания была основанна в 1990 году и уже успела себя
+            зарекомендовать на рынке.
+        </p>
+        <p><a class="btn btn-default" href="https://geotrade.su/">Узнать больше &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Для физ. лиц</h2>
+        <p>Физические лица могу обратиться по адресу:</p>
+        <p><a class="btn btn-default" href="https://geotrade.su/feedback#form">Узнать больше &raquo;</a></p>
+    </div>    
+</div>
+
+{% endblock %}
+

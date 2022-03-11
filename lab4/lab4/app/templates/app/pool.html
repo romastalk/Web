@@ -1,0 +1,67 @@
+{% extends "app/layout.html" %}
+{% block content %}
+{% load static %}
+{% if form != None %}
+<h2>Оставить отзыв о компании</h2>
+<div>
+    <form method="post">
+        {% csrf_token %}
+        <label for="{{ form.name.id_for_label }}">{{ form.name.label }}:</label>
+        {{ form.name }}<br>
+        <label for="{{ form.name.id_for_label }}">{{ form.design.label }}:</label>
+        {{ form.design }}<br>
+        <label for="{{ form.name.id_for_label }}">{{ form.color_palette.label }}:</label>
+        {{ form.color_palette }}<br>
+        <label for="{{ form.name.id_for_label }}">{{ form.icon.label }}:</label>
+        {{ form.icon }}<br>
+        <label for="{{ form.name.id_for_label }}">{{ form.what_change.label }}:</label>
+        {{ form.what_change }}<br>
+        <label for="{{ form.name.id_for_label }}">{{ form.impressions.label }}:</label>
+        {{ form.impressions }}<br>
+        <label for="{{ form.name.id_for_label }}">{{ form.visit.label }}:</label>
+        {{ form.visit }}<br>
+        <input type="submit" value="Отправить" id="send_btn">
+    </form>
+</div>
+{% else %}
+<h2>Благодарим!</h2>
+<ul>
+    <li><span>Ваше имя:</span>{{ data.name }}</li>
+    <li><span>Оценка сайта:</span>{{ data.design }}</li>
+    <li><span>Оценка цветой палитры:</span>{{ data.color_palette }}</li>
+    <li><span>Оценка иконки:</span>{{ data.icon }}</li>
+    <li><span>Что изменить:</span>{{ data.what_change }}</li>
+    <li><span>В целом впечатления:</span>{{ data.impressions }}</li>
+    <li><span>Средняя оценка:</span>{{ data.average_rating }}</li>
+    <li><span>Вернулись бы:</span>{{ data.visit }}</li>
+</ul>
+{% endif %}
+<script>
+
+    window.addEventListener("load", function () {
+        $("#send_btn").mouseenter(function () {
+            $("#send_btn").css('background', 'gold');
+        });
+
+        $("#send_btn").mouseleave(function () {
+            $("#send_btn").css('background', 'LightGray');
+        });
+        
+        $("#id_name").mouseenter(function () {
+            $("#id_name").css('background', 'gold');
+        });
+
+        $("#id_name").mouseleave(function () {
+            $("#id_name").css('background', 'White');
+        });
+
+        $("#id_impressions").mouseenter(function () {
+            $("#id_impressions").css('background', 'LightCoral');
+        });
+
+        $("#id_impressions").mouseleave(function () {
+            $("#id_impressions").css('background', 'White');
+        });
+    });
+</script>
+{% endblock %}
